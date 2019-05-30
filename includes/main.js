@@ -23,9 +23,14 @@ function initiateApp(){
 	/*advanced: add jquery sortable call here to make the gallery able to be sorted
 		//on change, rebuild the images array into the new order
 	*/
+
 	makeGallery(pictures);
 	addModalCloseHandler();
+	// storeImages();
+	
+
 }
+
 function makeGallery(imageArray){
 	//use loops and jquery dom creation to make the html structure inside the #gallery section
 
@@ -35,12 +40,49 @@ function makeGallery(imageArray){
 		//attach a click handler to the figure you create.  call the "displayImage" function.  
 
 		//append the element to the #gallery section
+	
+		// debugger;
+		var hiddenTemplateContents = $('#hidden-template').html();
 
+		// console.log(hiddenTemplateContents);
+		
+		// console.log($hiddenTemplateContents);
+
+		for(var x=0; x < imageArray.length; x++){
+			var $hiddenTemplateContents = $(hiddenTemplateContents);
+
+			var eachPicture = imageArray[x];
+		
+		
+			
+			var getImageName = eachPicture.slice(7);
+		
+			//$hiddenTemplateContents.find('figcaption').text(getImageName);
+			$('figcaption', $hiddenTemplateContents).text(getImageName);
+			var backgroundImageUrl = 'background-image:url(' +eachPicture+ ')';
+			var eachFigure = $hiddenTemplateContents.attr('style', backgroundImageUrl);
+
+			// console.log(eachFigure);
+			$(eachFigure).on('click', displayImage);
+			
+			$('#gallery').append(eachFigure);
+
+
+			
+		}
+		
+		sortImages();
+
+		
 }
 
 function addModalCloseHandler(){
 	//add a click handler to the img element in the image modal.  When the element is clicked, close the modal
 	//for more info, check here: https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp	
+
+	$('img').on('click', function(){
+			$(this).modal('hide');
+		});
 }
 
 function displayImage(){
@@ -56,7 +98,88 @@ function displayImage(){
 
 	//show the modal with JS.  Check for more info here: 
 	//https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp
+			// debugger;
+			// var imageAttribute = $(this).attr('style');
+			var imageAttribute = $(this).css('background-image');
+			console.log(imageAttribute);
+			var imageUrl = imageAttribute.slice(27, -2);
+
+			console.log(imageUrl);
+		
+
+			//slice to get image name//
+	
+			var imageName = imageUrl.slice(7, -4);
+			console.log(imageName);
+
+			$('.modal-title').text(imageName);
+
+			$('.imageSource').attr('src', imageUrl);
+
+			$('#galleryModal').modal('show');
+
+
 }
+
+function sortImages(){
+	// debugger;
+
+		$('#gallery').sortable({
+				// appendTo: document.body
+				appendTo: document.body
+			});
+
+		$('figure').sortable({
+				// appendTo: document.body
+				appendTo: '#gallery'
+		});
+
+		
+		
+
+	// // Getter
+			// var appendTo = $('figure').sortable( 'option', 'appendTo');
+			var appendTo = $('figure').sortable( 'option','appendTo');
+ 
+	// // Setter
+		// $( 'figure').sortable( 'option', 'appendTo', document.body);
+		$( 'figure').sortable( 'option','appendTo', '#gallery');
+
+
+
+}
+
+// function storeImages(){
+
+// 	var getInnerHtmlInGallery = $('#gallery').html();
+
+// 	console.log(getInnerHtmlInGallery);
+
+// 	var $getInnerHtmlInGallery = $(getInnerHtmlInGallery);
+
+
+// 	var figureAttribute = $('figure').attr('style');
+
+// 	var newImageArray = [];
+
+// 	newImageArray.push(figureAttribute);
+
+// 	console.log(newImageArray);
+
+// 	console.log(figureAttribute);
+
+// 	var setItem = localStorage.setItem('src', image);
+
+// 	console.log(setItem);
+
+	
+
+// 	var getImages = localStorage.getItem('src');
+
+// 	console.log(getImages);
+
+// }
+
 
 
 

@@ -11,7 +11,8 @@
 </head>
 <body>
 	<section id="gallery">
-		<figure class="imageGallery col-xs-12 col-sm-6 col-md-4" style="background-image:url(images/landscape-1.jpg);">
+
+		<!-- <figure class="imageGallery col-xs-12 col-sm-6 col-md-4" style="background-image:url(images/landscape-1.jpg);">
 			<figcaption>landscape-1.jpg</figcaption>
 		</figure>
 		<figure class="imageGallery col-xs-12 col-sm-6 col-md-4" style="background-image:url(images/landscape-2.jpg);">
@@ -28,7 +29,11 @@
 		</figure>
 		<figure class="imageGallery col-xs-12 col-sm-6 col-md-4" style="background-image:url(images/landscape-10.jpg);">
 			<figcaption>landscape-10.jpg</figcaption>
-		</figure>
+		</figure> -->
+	
+
+
+	
 	</section>
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#galleryModal">Open Modal</button>
 
@@ -42,12 +47,19 @@
           <h4 class="modal-title">landscape-10</h4>
         </div>
         <div class="modal-body">
-          <img src="images/landscape-10.jpg">
+          <img class='imageSource' src="images/landscape-10.jpg">
         </div>
       </div>
       
     </div>
-  </div>
+	</div>
+	
+	
+	<script id="hidden-template" type="text/template">
+		<figure class="imageGallery col-xs-12 col-sm-6 col-md-4">
+			<figcaption></figcaption>
+		</figure>
+	</script>
 
 </body>
 </html>
