@@ -26,7 +26,7 @@ function initiateApp(){
 
 	makeGallery(pictures);
 	addModalCloseHandler();
-	// storeImages();
+	
 	
 
 }
@@ -149,36 +149,7 @@ function sortImages(){
 
 }
 
-// function storeImages(){
 
-// 	var getInnerHtmlInGallery = $('#gallery').html();
-
-// 	console.log(getInnerHtmlInGallery);
-
-// 	var $getInnerHtmlInGallery = $(getInnerHtmlInGallery);
-
-
-// 	var figureAttribute = $('figure').attr('style');
-
-// 	var newImageArray = [];
-
-// 	newImageArray.push(figureAttribute);
-
-// 	console.log(newImageArray);
-
-// 	console.log(figureAttribute);
-
-// 	var setItem = localStorage.setItem('src', image);
-
-// 	console.log(setItem);
-
-	
-
-// 	var getImages = localStorage.getItem('src');
-
-// 	console.log(getImages);
-
-// }
 
 
 
